@@ -8,7 +8,7 @@ from follows import views as follows_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('connection/', authentication_views.connection),
+    path('', authentication_views.connection, name='connection'),
     path('inscription/', authentication_views.inscription),
 
     path('flux/', ticket_views.flux),
