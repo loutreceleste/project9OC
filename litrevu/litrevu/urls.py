@@ -1,17 +1,25 @@
 from django.contrib import admin
 from django.urls import path
-from litrevu.ticket import views as ticket_views
-from litrevu.authentication import views as authentication_views
+from tickets import views as ticket_views
+from authentication import views as authentication_views
+from reviews import views as reviews_views
+from follows import views as follows_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accueil/', authentication_views.accueil),
+
+    path('connection/', authentication_views.connection),
     path('inscription/', authentication_views.inscription),
+
     path('flux/', ticket_views.flux),
+    path('my_flux/', ticket_views.my_flux),
     path('ticket/', ticket_views.ticket),
-    path('critique_sans_ticket/', ticket_views.critique_sans_ticket),
-    path('critique_avec_ticket/', ticket_views.critique_avec_ticket),
-    path('posts/', ticket_views.posts),
-    path('modifier_critique/', ticket_views.modifier_critique),
-    path('modifier_ticket/', ticket_views.modifier_ticket),
+    path('edit_ticket/', ticket_views.edit_ticket),
+
+
+    path('edit_review/', reviews_views.edit_review),
+    path('review_whithout_ticket/', reviews_views.review_whithout_ticket),
+    path('review_whith_ticket/', reviews_views.review_whith_ticket),
+
+    path('follows/', follows_views.follows),
 ]
