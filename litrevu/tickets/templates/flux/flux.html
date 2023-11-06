@@ -1,12 +1,12 @@
-<html>
-    <head><title>Litrevu</title><head>
+{% extends 'base.html' %}
+{% block content %}
     <body>
-        <h1>Hello ticket!</h1>
-        <p>Voici l'exemple d'un ticket :<p>
-        <ul>
-            <li>{{ critique.0.critic_title }}</li>
-            <li>{{ critique.0.book_ranking }}</li>
-            <li>{{ critique.0.critic_comment }}</li>
-        </ul>
+        <h1>FLUX</h1>
+           <p>Bienvenue sur le Flux d'actualités de LitRevu.<p>
+                <ul>
+                    <li>Post 1</li>
+                    <li>Post 2</li>
+                    <li>Post 3</li>
+                </ul>
     </body>
-</html>
+{% endblock content %}

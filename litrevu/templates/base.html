@@ -2,10 +2,10 @@
 <html>
 <head><title>Litrevu</title><head>
     <body>
-        <h1>Bienvenue sur LITREVU</h1>
-        <h2>Veuillez vous connecter</h2>
-
-    {% block content %}{% endblock content %}
-
+        <h1>LITREVU</h1>
+            {% block content %}{% endblock content %}
+            {% if user.is_authenticated %}
+                    <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
+                    {% endif %}
     </body>
 </html>
