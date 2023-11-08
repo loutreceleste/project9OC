@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_authentication.html' %}
 {% block content %}
     <h2>Inscription</h2>
     <form method="post">
@@ -6,4 +6,5 @@
         {% csrf_token %}
         <button type="submit" >S’inscrire</button>
     </form>
+    <a href="{% url 'login' %}"> <button>Retour</button> </a>
 {% endblock content %}

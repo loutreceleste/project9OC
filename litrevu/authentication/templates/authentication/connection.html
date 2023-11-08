@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_authentication.html' %}
 {% block content %}
     <h1>Connectez-vous.</h1>
     <p>{{ message }}</p>
@@ -7,5 +7,5 @@
         {{ form.as_p }}
         <button type="submit" >Se connecter</button>
     </form>
-    <p>Pas encore membre? <a href="{% url 'inscription' %}">Inscrives-vous maintenant!</a> </p>
+    <p>Inscrivez-vous maintenant <a href="{% url 'inscription' %}">S'inscrire</a> </p>
 {% endblock content %}

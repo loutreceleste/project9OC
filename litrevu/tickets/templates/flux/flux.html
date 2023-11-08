@@ -1,12 +1,23 @@
-{% extends 'base.html' %}
+{% extends 'base_user.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'ticket.css' %}">
 {% block content %}
-    <body>
-        <h1>FLUX</h1>
-           <p>Bienvenue sur le Flux d'actualités de LitRevu.<p>
-                <ul>
-                    <li>Post 1</li>
-                    <li>Post 2</li>
-                    <li>Post 3</li>
-                </ul>
-    </body>
+    <h2>Flux</h2>
+        <button><a class="{% block flux %}{% endblock %}" href="{% url 'review_whithout_ticket' %}">Demander une critique</a></button>
+        <button><a class="{% block posts %}{% endblock %}" href="{% url 'ticket' %}">Créer une critique</a></button>
+    <div class="ticket">
+        {% for ticket in tickets %}
+            <p>{{ ticket.book_title }}</p>
+            <p>{{ ticket.book_description }}</p>
+            <img src="{{ ticket.book_image.url }}">
+        {% endfor %}
+        {% for review in reviews %}
+            <p>{{ review.ticket.book_title }}</p>
+            <p>{{ review.ticket.book_description }}</p>
+            <img src="{{ review.ticket.book_image.url }}">
+            <p>{{ review.headline }}</p>
+            <p>{{ review.rating }}</p>
+            <p>{{ review.body }}</p>
+        {% endfor %}
+    </div>
 {% endblock content %}

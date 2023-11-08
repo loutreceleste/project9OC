@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'base_user.css' %}">
+<!DOCTYPE html>
+<html>
+<head><title>Litrevu</title><head>
+    <body>
+        <h1>LITREVU</h1>
+        {% if user.is_authenticated %}
+        <p>Bonjour {{ request.user }}.</p>
+        {% endif %}
+        {% block navigation %}
+             <ul id="top">
+                <li><a class="{% block flux %}{% endblock %}" href="{% url 'flux' %}">Flux</a></li>
+                <li><a class="{% block posts %}{% endblock %}" href="{% url 'flux' %}">Posts</a></li>
+                <li><a class="{% block abonnement %}{% endblock %}" href="{% url 'flux' %}">Abonnements</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="{% block myaccount %}{% endblock %}" href="{% url 'logout' %}">Se déconnecter</a></li>
+                {% endif %}
+             </ul>
+         {% endblock %}
+            {% block content %}{% endblock content %}
+    </body>
+</html>
