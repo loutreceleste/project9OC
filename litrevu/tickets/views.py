@@ -28,7 +28,7 @@ def ticket(request):
 
         if form.is_valid():
             photo = form.save(commit=False)
-            photo.uploader = request.user
+            photo.user = request.user
             photo.save()
             return redirect('flux')
 

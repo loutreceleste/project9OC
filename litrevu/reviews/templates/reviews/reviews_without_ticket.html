@@ -5,6 +5,7 @@
         {% csrf_token %}
         {{ ticket_form.as_p }}
         {{ review_form.as_p }}
-    <button type='submit' >Publier</button>
+    <button type='submit' >Envoyer</button>
     </form>
+    <a href="{% url 'flux' %}"> <button>Retour</button> </a>
 {% endblock content %}

@@ -5,6 +5,8 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = models.CreateTicket
         fields = ['book_title', 'book_description', 'book_image']
-
-    book_title = forms.CharField(label="Titre", max_length=100)
-    book_description = forms.CharField(label="Description", max_length=100)
+        labels = {
+            'book_title': 'Titre',
+            'book_description': 'Description',
+            'book_image': 'Image',
+        }

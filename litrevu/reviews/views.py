@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import ReviewForm, TicketForm
+from .forms import ReviewForm
+from tickets.forms import TicketForm
 
 
 @login_required
@@ -14,7 +15,7 @@ def review_whithout_ticket(request):
 
         if ticket_form.is_valid() and review_form.is_valid():
             ticket = ticket_form.save(commit=False)
-            ticket.author = request.user
+            ticket.user = request.user  # Assurez-vous que l'utilisateur est associé au ticket
             ticket.save()
 
             review = review_form.save(commit=False)
@@ -22,13 +23,14 @@ def review_whithout_ticket(request):
             review.ticket = ticket
             review.save()
 
-            return redirect('flux')  # Rediriger l'utilisateur vers la page "flux"
+            return redirect('flux')
 
     context = {
         'ticket_form': ticket_form,
         'review_form': review_form,
     }
     return render(request, 'reviews/reviews_without_ticket.html', context=context)
+
 
 @login_required
 def review_whith_ticket(request):

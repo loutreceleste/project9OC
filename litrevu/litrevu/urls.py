@@ -2,6 +2,9 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
+
+admin.autodiscover()
+
 from tickets import views as ticket_views
 from authentication import views as authentication_views
 from reviews import views as reviews_views
