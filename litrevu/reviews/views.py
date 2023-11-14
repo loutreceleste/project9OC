@@ -1,7 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
 from .forms import ReviewForm
 from tickets.forms import TicketForm
+
+from .models import CreateReviewWithTicket
 
 
 @login_required
@@ -37,5 +40,36 @@ def review_whith_ticket(request):
     return render(request, 'reviews/review_whith_ticket.html')
 
 @login_required
-def edit_review(request):
-    return render(request, 'reviews/edit_review.html')
+def edit_review(request, id):
+    review = CreateReviewWithTicket.objects.get(id=id)
+
+    if request.user == review.user:
+        if request.method == 'POST':
+            form = ReviewForm(request.POST, instance=review)
+            if form.is_valid():
+                form.save()
+                return redirect('my_flux')
+
+        else:
+            form = ReviewForm(instance=review)
+
+        return render(request, 'reviews/edit_review.html', {'form': form})
+
+    else:
+        raise PermissionDenied
+
+
+@login_required
+def delete_review(request, id):
+    review_whith_ticket = CreateReviewWithTicket.objects.get(id=id)
+
+    if request.user == review_whith_ticket.user:
+        if request.method =='POST':
+            review_whith_ticket.delete()
+            return redirect('my_flux')
+
+
+        return render(request, 'reviews/delete_review.html', {'review_whith_ticket': review_whith_ticket})
+
+    else:
+        raise PermissionDenied

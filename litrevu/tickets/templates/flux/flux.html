@@ -1,22 +1,30 @@
 {% extends 'base_user.html' %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'ticket.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'static/flux.css' %}">
 {% block content %}
+
     <h2>Flux</h2>
+
     <button><a class="{% block flux %}{% endblock %}" href="{% url 'review_whithout_ticket' %}">Demander une critique</a></button>
     <button><a class="{% block posts %}{% endblock %}" href="{% url 'ticket' %}">Créer une critique</a></button>
+
     <div class="ticket">
         {% for ticket in tickets %}
             {% if ticket.has_reviews %}
-                <!-- Afficher les détails du ticket -->
                 <p>{{ ticket.book_title }}</p>
                 <p>{{ ticket.book_description }}</p>
                 <img src="{{ ticket.book_image.url }}">
+                {%  if request.user == ticket.user %}
+                    <p>Vous avez publié ce ticket.</p>
+                {% else %}
+                    <p>{{ ticket.user }} a publier ce ticket</p>
+                {% endif %}
+                <p>{{ ticket.date_created }}</p>
                 <a href="{% url 'flux' %}"> <button>Créer une critique</button> </a>
             {% endif %}
         {% endfor %}
-
-
+    </div>
+    <div class="review">
         {% for review in reviews %}
             <p>{{ review.ticket.book_title }}</p>
             <p>{{ review.ticket.book_description }}</p>
@@ -24,6 +32,16 @@
             <p>{{ review.headline }}</p>
             <p>{{ review.rating }}</p>
             <p>{{ review.body }}</p>
+            {%  if request.user == review.user %}
+                    <p>Vous avez publié ce ticket.</p>
+                {% else %}
+                    <p>{{ review.user }} a publier ce ticket</p>
+                {% endif %}
+            <p>{{ review.time_created }}</p>
+            {%  if request.user != review.user %}
+                <a href="{% url 'flux' %}"> <button>Créer une critique</button> </a>
+            {% endif %}
         {% endfor %}
     </div>
+
 {% endblock content %}

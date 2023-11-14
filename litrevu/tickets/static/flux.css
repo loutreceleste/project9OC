@@ -1,3 +1,5 @@
 .ticket {
-    border: black;
+    border: 2px solid black !important;
+    padding: 10px;
+    margin: 10px;
 }
