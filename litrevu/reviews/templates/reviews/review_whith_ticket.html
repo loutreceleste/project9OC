@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_user.html' %}
+{% block content %}
+    <H2>Creer Review</H2>
 
-</body>
-</html>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ review_form.as_p }}
+    <button type='submit' >Envoyer</button>
+    </form>
+    <a href="{% url 'flux' %}"> <button>Retour</button> </a>
+{% endblock content %}

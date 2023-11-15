@@ -8,6 +8,3 @@ class CreateTicket(models.Model):
     book_image = ResizedImageField(size=[500, 300], upload_to='main', blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, default="")
-
-    def has_reviews(self):
-        return not self.reviews.all().exists()

@@ -12,9 +12,13 @@ from .models import CreateTicket
 def flux(request):
     tickets = models.CreateTicket.objects.all()
     reviews = CreateReviewWithTicket.objects.all()
+
+    reviewed_tickets = set(review.ticket for review in reviews if review.user == request.user)
+
     context = {
         'tickets': tickets,
         'reviews': reviews,
+        'reviewed_tickets': reviewed_tickets,
     }
     return render(request, 'flux/flux.html', context=context)
 

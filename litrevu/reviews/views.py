@@ -5,6 +5,7 @@ from .forms import ReviewForm
 from tickets.forms import TicketForm
 
 from .models import CreateReviewWithTicket
+from .models import CreateTicket
 
 
 @login_required
@@ -36,8 +37,22 @@ def review_whithout_ticket(request):
 
 
 @login_required
-def review_whith_ticket(request):
-    return render(request, 'reviews/review_whith_ticket.html')
+def review_whith_ticket(request, id):
+    ticket = CreateTicket.objects.get(id=id)
+    review_form = ReviewForm()
+
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.ticket = ticket
+            review.save()
+
+            return redirect('flux')
+
+    return render(request, 'reviews/review_whith_ticket.html', {'review_form': review_form, 'ticket': ticket})
 
 @login_required
 def edit_review(request, id):
