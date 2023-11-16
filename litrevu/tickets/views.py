@@ -1,37 +1,48 @@
+from itertools import chain
 from django.core.exceptions import PermissionDenied
+from django.db.models import CharField, Value
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from . import forms, models
 from reviews.models import CreateReviewWithTicket
-
 from .forms import TicketForm
 from .models import CreateTicket
 
-
 @login_required
 def flux(request):
-    tickets = models.CreateTicket.objects.all()
-    reviews = CreateReviewWithTicket.objects.all()
+    tickets_all = models.CreateTicket.objects.all().annotate(content_type=Value('TICKET', CharField()))
+    reviews_all = CreateReviewWithTicket.objects.all().annotate(content_type=Value('REVIEW', CharField()))
+    reviews = CreateReviewWithTicket.objects.filter(user=request.user)
+    tickets = CreateTicket.objects.filter(user=request.user)
 
-    reviewed_tickets = set(review.ticket for review in reviews if review.user == request.user)
+    tickets_user = [ticket for ticket in tickets]
+    reviewed_tickets = [review.ticket for review in reviews]
+
+    combined_items = sorted(chain(tickets_all, reviews_all),
+        key=lambda item: item.time_created if hasattr(item, 'time_created') else item.date_created,
+        reverse=True)
 
     context = {
-        'tickets': tickets,
-        'reviews': reviews,
         'reviewed_tickets': reviewed_tickets,
+        'tickets_user': tickets_user,
+        'combined_items': combined_items,
     }
     return render(request, 'flux/flux.html', context=context)
 
 @login_required
 def my_flux(request):
-    tickets = models.CreateTicket.objects.all()
-    reviews = CreateReviewWithTicket.objects.all()
-    context = {
-        'tickets': tickets,
-        'reviews': reviews,
-    }
-    return render(request, 'flux/my_flux.html', context=context)
+    tickets_all = models.CreateTicket.objects.all().annotate(content_type=Value('TICKET', CharField()))
+    reviews_all = CreateReviewWithTicket.objects.all().annotate(content_type=Value('REVIEW', CharField()))
 
+    combined_items = sorted(chain(tickets_all, reviews_all),
+                            key=lambda item: item.time_created if hasattr(item, 'time_created') else item.date_created,
+                            reverse=True)
+
+    context = {
+        'combined_items': combined_items,
+    }
+
+    return render(request, 'flux/my_flux.html', context=context)
 
 @login_required
 def ticket(request):

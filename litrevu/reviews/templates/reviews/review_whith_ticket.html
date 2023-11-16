@@ -1,6 +1,19 @@
 {% extends 'base_user.html' %}
 {% block content %}
-    <H2>Creer Review</H2>
+    <H2>Creer une critique</H2>
+
+    <p>Vous êtes en train de poster en réponse à </p>
+
+    {%  if request.user == ticket.user %}
+                <p>Vous avez publié ce ticket.</p>
+            {% else %}
+                <p>{{ ticket.user }} a demandé une critique.</p>
+            {% endif %}
+
+            <p>{{ ticket.date_created }}</p>
+            <p>{{ ticket.book_title }}</p>
+            <p>{{ ticket.book_description }}</p>
+            <img src="{{ ticket.book_image.url }}">
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}

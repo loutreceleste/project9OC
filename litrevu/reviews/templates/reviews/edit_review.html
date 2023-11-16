@@ -2,6 +2,17 @@
 {% block content %}
 <h1>Modifier cette critique</h1>
 
+    {%  if request.user == ticket.user %}
+                <p>Vous avez publié ce ticket.</p>
+            {% else %}
+                <p>{{ ticket.user }} a demandé une critique.</p>
+            {% endif %}
+
+            <p>{{ ticket.date_created }}</p>
+            <p>{{ ticket.book_title }}</p>
+            <p>{{ ticket.book_description }}</p>
+            <img src="{{ ticket.book_image.url }}">
+
   <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
