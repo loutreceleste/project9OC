@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from authentication.forms import LoginForm, SignupForm
-from django.conf import settings
-from django.views.generic import View
-
+from authentication.models import User
+from authentication.forms import FollowForm
 
 
 def logout_user(request):
@@ -38,3 +38,50 @@ def signup_page(request):
             login(request, user)
             return redirect('flux')
     return render(request, 'authentication/inscription.html', context={'form':form})
+
+
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.http import Http404
+from .models import User
+from .forms import FollowForm
+
+@login_required
+def follow_view(request):
+    user = request.user
+    following = user.follows.all()
+    followers = user.followers.all()
+
+    form = FollowForm(request.POST or None)
+    message = ''
+
+    if request.method == 'POST':
+        if 'follow' in request.POST:
+            form = FollowForm(request.POST)
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                try:
+                    user_to_follow = User.objects.get(username=username)
+                    if user_to_follow == user:
+                        message = 'Vous ne pouvez pas vous suivre vous-même.'
+                    elif user_to_follow in user.follows.all():
+                        message = 'Vous suivez déjà cet utilisateur.'
+                    else:
+                        user.follows.add(user_to_follow)
+                except User.DoesNotExist:
+                    message = 'Utilisateur inconnu.'
+
+        elif 'unfollow' in request.POST:
+            user_to_unfollow_id = request.POST.get('unfollow')
+            user_to_unfollow = get_object_or_404(User, id=user_to_unfollow_id)
+            user.follows.remove(user_to_unfollow)
+
+    context = {
+        'following': following,
+        'followers': followers,
+        'form': form,
+        'message': message,
+    }
+
+    return render(request, 'authentication/follow.html', context)

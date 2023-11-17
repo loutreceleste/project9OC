@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
@@ -26,8 +27,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(blank=True, null=True, verbose_name='last login')
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-
+    follows = models.ManyToManyField(
+        'self',
+        symmetrical=False,
+        verbose_name='suit',
+        related_name='followers',
+    )
     objects = UserManager()
 
     USERNAME_FIELD = "username"
-

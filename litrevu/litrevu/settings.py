@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'authentication',
     'tickets',
     'reviews',
-    'follows',
 ]
 
 MIDDLEWARE = [
