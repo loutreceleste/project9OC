@@ -1,0 +1,153 @@
+
+.item {
+    border: 2px solid black !important;
+    padding: 10px;
+    margin: 10px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 25px;
+    margin-top: 119px;
+    margin-bottom: 90px;
+    overflow-x: hidden;
+
+}
+.ticket {
+    border: 2px solid black; /* Spécifie le type de bordure (solid) et la couleur (black) */
+    justify-content: left; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    margin: 30px;
+    margin-bottom: 0;
+    margin-top: 70px;
+    padding-right: 376px;
+    padding-left: 27px;
+    padding-bottom: 20px;
+    padding-top: 6px;
+    width: 604px;
+}
+
+.review {
+    border: 2px solid black;
+    text-align: left; /* Aligne le contenu du div à gauche */
+    margin: 30px;
+    margin-bottom: 0;
+    margin-top: 70px;
+    padding-right: 508px;
+    padding-left: 19px;
+    width: 475px;
+}
+
+.iner_ticket{
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    padding-right: 150px;
+    padding-left: 26px;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
+    margin-right: -462px;
+    margin-left: 32px;
+    margin-top: 5px;
+}
+.boutton_creation {
+    font-family: "BebasNeue-Regular", sans-serif;
+    display: flex;
+    flex-direction: row;
+
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    padding: 12px 48px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0px 20px;
+}
+.boutton {
+    font-family: "BebasNeue-Regular", sans-serif;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    padding: 12px 48px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 56px 20px;
+}
+#boutton {
+    display: flex;
+    flex-direction: row;
+    gap: 113px;
+}
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+.first_line_ticket {
+    display: flex;
+    justify-content: space-between; /* Pour espacer les éléments */
+    margin-right: -961px;
+    gap: 110px;
+}
+
+.left-content, .right-content {
+    flex-basis: 50%; /* Pour que les deux éléments occupent chacun 50% de l'espace */
+}
+.date{
+    font-size: 15px;
+    color: black;
+    margin-right: -97px;
+}
+.right-content{
+    display: flex;
+    align-items: center;
+}
+.author{
+    font-size: 17px;
+}
+.title_ticket{
+    font-size: 25px;
+    margin-top: 8px;
+}
+img {
+    margin-left: 4px;
+}
+.first_line_review{
+    display: flex;
+    justify-content: space-between; /* Pour espacer les éléments */
+    margin-right: -388px;
+    margin-top: 10px;
+    gap: 110px;
+}
+p{
+    margin-right: -193px;
+}
+.second_line_review {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Pour aligner verticalement si nécessaire */
+}
+.star{
+    margin-top: 0;
+}
+.title_review {
+    margin-right: 25px;
+    margin-top: 7px;
+    font-size: 25px;/* Pour espacer le titre des étoiles */
+}
+
+.star {
+    margin-top: 0px; /* Supprimer toute marge supplémentaire (si nécessaire) */
+}
+.body_review {
+    margin-top: -2px;
+}

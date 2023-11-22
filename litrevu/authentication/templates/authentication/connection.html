@@ -1,11 +1,19 @@
+<!-- Votre fichier HTML -->
 {% extends 'base_authentication.html' %}
 {% block content %}
-    <h1>Connectez-vous.</h1>
-    <p>{{ message }}</p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" >Se connecter</button>
-    </form>
-    <p>Inscrivez-vous maintenant <a href="{% url 'inscription' %}">S'inscrire</a> </p>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'authentication/connection.css' %}"/>
+    <div id="content">
+        <h2>- Connectez-vous -</h2>
+        <p>{{ message }}</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" >Se connecter</button>
+        </form>
+        <div class="inscription">
+            <p>Pas encore inscrit?</p>
+            <p>Inscrivez-vous maintenant en cliquant <a href="{% url 'inscription' %}">ici</a> </p>
+        </div>
+    </div>
 {% endblock content %}

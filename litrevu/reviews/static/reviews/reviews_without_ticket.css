@@ -1,0 +1,130 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    font-family: "BebasNeue-Regular", sans-serif;
+    margin: 0;
+    font-size: 25px;
+    padding-top: 115px;
+}
+#content {
+    text-align: center;
+}
+
+button {
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    padding: 10px 20px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 90px; /* Espacement entre les boutons */
+}
+
+button:hover {
+    background-color: grey;
+}
+
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+    margin-bottom: 78px;
+}
+h3{
+   font-family: "Granesta", sans-serif;
+    font-size: 30px;
+    letter-spacing: 4px;
+    margin-top: 60px;
+}
+
+#id_book_title {
+    height: 29px; /* Ajustez la hauteur selon vos préférences */
+    width: 400px; /* Ajustez la largeur selon vos préférences */
+    margin-bottom: -167px; /* Espacement entre les champs */
+}
+#id_book_description {
+    height: 187px; /* Ajustez la hauteur selon vos préférences */
+    width: 400px; /* Ajustez la largeur selon vos préférences */
+}
+label[for="id_book_description"] {
+    padding-right: 298px;
+}
+label[for="id_book_title"] {
+    padding-right: 351px;
+}
+label[for="id_book_image"] {
+    padding-right: 351px;
+    margin-top: -27px;
+}
+
+
+#id_headline {
+    height: 29px; /* Ajustez la hauteur selon vos préférences */
+    width: 400px; /* Ajustez la largeur selon vos préférences */
+    margin-bottom: -167px; /* Espacement entre les champs */
+}
+#id_body {
+    height: 187px; /* Ajustez la hauteur selon vos préférences */
+    width: 400px; /* Ajustez la largeur selon vos préférences */
+}
+p label {
+    padding-right: 350px;
+}
+label[for="id_headline"] {
+    margin-top: -40px;
+}
+label[for="id_body"] {
+    padding-right: 350px;
+}
+
+
+
+label {
+    font-size: 25px; /* Ajustez la taille de police selon vos préférences */
+    display: block; /* Pour afficher les labels sur des lignes séparées */
+    margin-bottom: 5px; /* Espacement entre les labels */
+}
+#id_book_image {
+    color: black;
+    border: none;
+    padding: 10px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: -46px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto; /* Centrer verticalement */
+    max-width: 400px; /* Optionnel : pour définir une largeur maximale */
+    padding: 20px; /* Optionnel : pour ajouter de l'espace autour du formulaire */
+    margin-top: -56px;
+}
+label{
+    font-size: 25px;
+
+}
+button.submit {
+    width: 110px;
+    margin: auto; /* Pour centrer le bouton horizontalement */
+    display: block;
+}
+p {
+    font-size: 20px;
+    margin-right: 5px;
+}
+#id_rating{
+    display: flex;
+    flex-direction: row;
+    padding-right: 10px;
+    gap: 58px;
+    margin-bottom: -49px;
+    margin-top: -15px;
+}

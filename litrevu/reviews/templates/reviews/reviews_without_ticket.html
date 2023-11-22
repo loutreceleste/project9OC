@@ -1,11 +1,17 @@
 {% extends 'base_user.html' %}
 {% block content %}
-    <H2>Creer Review</H2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ ticket_form.as_p }}
-        {{ review_form.as_p }}
-    <button type='submit' >Envoyer</button>
-    </form>
-    <a href="{% url 'flux' %}"> <button>Retour</button> </a>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reviews/reviews_without_ticket.css' %}">
+    <div id="content">
+        <H2>- Creer Review -</H2>
+        <H3>Le livre / l'Article</H3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ ticket_form.as_p }}
+        <H3>La Critique</H3>
+            {{ review_form.as_p }}
+        <button type='submit' class="submit">Envoyer</button>
+        </form>
+        <a href="{% url 'flux' %}"> <button>Retour</button> </a>
+    </div>
 {% endblock content %}

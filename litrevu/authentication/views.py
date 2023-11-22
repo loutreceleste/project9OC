@@ -1,9 +1,12 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from authentication.forms import LoginForm, SignupForm
 from authentication.models import User
 from authentication.forms import FollowForm
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .models import User
+from .forms import FollowForm
 
 
 def logout_user(request):
@@ -28,7 +31,6 @@ def connection(request):
     return render(
         request, 'authentication/connection.html', context={'form': form, 'message': message})
 
-
 def signup_page(request):
     form = SignupForm()
     if request.method == 'POST':
@@ -39,19 +41,10 @@ def signup_page(request):
             return redirect('flux')
     return render(request, 'authentication/inscription.html', context={'form':form})
 
-
-from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.http import Http404
-from .models import User
-from .forms import FollowForm
-
 @login_required
 def follow_view(request):
     user = request.user
     following = user.follows.all()
-    followers = user.followers.all()
 
     form = FollowForm(request.POST or None)
     message = ''
@@ -79,7 +72,6 @@ def follow_view(request):
 
     context = {
         'following': following,
-        'followers': followers,
         'form': form,
         'message': message,
     }

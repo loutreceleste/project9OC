@@ -4,10 +4,9 @@
 <html>
     <head><title>Litrevu</title></head>
     <body>
-        <h1>LITREVU</h1>
-            {% block content %}{% endblock content %}
-            {% if user.is_authenticated %}
-                    <p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
-                    {% endif %}
+        <div class="menu">
+            <h1>LITREVU</h1>
+        </div>
+        {% block content %}{% endblock content %}
     </body>
 </html>

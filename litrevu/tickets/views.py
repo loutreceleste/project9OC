@@ -10,10 +10,13 @@ from .models import CreateTicket
 
 @login_required
 def flux(request):
+    user = request.user
     tickets_all = models.CreateTicket.objects.all().annotate(content_type=Value('TICKET', CharField()))
     reviews_all = CreateReviewWithTicket.objects.all().annotate(content_type=Value('REVIEW', CharField()))
     reviews = CreateReviewWithTicket.objects.filter(user=request.user)
     tickets = CreateTicket.objects.filter(user=request.user)
+    following = user.follows.all()
+    followers = user.followers.all()
 
     tickets_user = [ticket for ticket in tickets]
     reviewed_tickets = [review.ticket for review in reviews]
@@ -26,6 +29,8 @@ def flux(request):
         'reviewed_tickets': reviewed_tickets,
         'tickets_user': tickets_user,
         'combined_items': combined_items,
+        'following': following,
+        'followers': followers,
     }
     return render(request, 'flux/flux.html', context=context)
 

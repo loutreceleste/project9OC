@@ -1,0 +1,60 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "BebasNeue-Regular", sans-serif;
+    margin: 0;
+    font-size: 25px;
+}
+
+#content {
+    text-align: center;
+}
+
+button {
+    background-color: black;
+    color: aliceblue;
+    border-radius: 0px;
+    padding: 10px 20px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: darkslategray;
+}
+
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    height: 29px;
+    width: 260px;
+}
+
+/* authentication/inscription.css */
+
+.button-group {
+    display: flex;
+    gap: 10px; /* Espacement entre les boutons */
+    justify-content: center; /* Alignement à gauche des boutons */
+}
+ul {
+    list-style: none; /* Supprime les marqueurs des listes */
+    padding: 0; /* Supprime le padding par défaut */
+    margin: 0; /* Supprime les marges par défaut */
+    font-size: 18px;
+}
+span {
+    font-size: 18px;
+    display: block;
+    padding-top: 6px;
+}

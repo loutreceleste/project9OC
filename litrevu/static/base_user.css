@@ -1,9 +1,68 @@
+@font-face {
+    font-family: "BebasNeue-Regular";
+    src: url("fonts/BebasNeue-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "Granesta";
+    src: url("fonts/Granesta.ttf") format("truetype");
+}
+
+.menu {
+    font-family: "BebasNeue-Regular", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: aliceblue;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+h1 {
+    font-family: "Granesta", sans-serif;
+    letter-spacing: 4px;
+    margin: 0;
+    font-size: 35px;
+}
+
 ul {
-  list-style-type: none;
-  display: flex;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 31px;
+    margin: 0;
+    font-size: 20px;
+    padding-right: 34px;
 }
 
 li {
-  margin-right: 10px;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
 }
 
+a:hover{
+    color: grey;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+p {
+    font-size: 20px;
+    margin-right: -1192px;
+}
+
+.bonjour{
+    pointer-events: none;
+    cursor: default;
+    color: inherit;
+    text-decoration: none;
+}

@@ -1,0 +1,58 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "BebasNeue-Regular", sans-serif;
+    margin: 0;
+    font-size: 25px;
+}
+
+#content {
+    text-align: center;
+}
+
+button {
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    padding: 10px 20px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: grey;
+}
+
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    height: 29px;
+    width: 260px;
+}
+a:hover{
+    color: grey;
+}
+a{
+    color: black;
+}
+.inscription{
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+}
+
+
+
+
+
