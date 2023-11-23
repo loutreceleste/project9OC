@@ -1,3 +1,4 @@
+/* ===== Global ===== */
 body {
     display: flex;
     flex-direction: column;
@@ -8,16 +9,22 @@ body {
     margin: 0;
     font-size: 25px;
 }
+
+/* ===== Paragraphe ===== */
 p {
-    text-align: center; /* Centre le texte horizontalement */
+    text-align: center;
     margin: -22px auto 42px;
     font-size: 25px;
 }
+
+/* ===== Titres ===== */
 h2 {
     font-family: "Granesta", sans-serif;
     font-size: 60px;
     letter-spacing: 4px;
 }
+
+/* ===== Boutons ===== */
 button {
     background-color: black;
     color: aliceblue;

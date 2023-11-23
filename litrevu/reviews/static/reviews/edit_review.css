@@ -1,3 +1,4 @@
+/* ===== Global ===== */
 body {
     display: flex;
     flex-direction: column;
@@ -12,42 +13,45 @@ body {
 #content {
     text-align: center;
 }
+
+/* ===== Paragraphe ===== */
 p {
-    margin: 3px auto 18px;
     font-size: 20px;
     color: black;
-    margin-right: 270px;
+    margin: 3px 270px 18px auto;
 }
+
+/* ===== Titres ===== */
 h2 {
     font-family: "Granesta", sans-serif;
     font-size: 60px;
     letter-spacing: 4px;
 }
-#id_headline {
-    height: 29px; /* Ajustez la hauteur selon vos préférences */
-    width: 400px; /* Ajustez la largeur selon vos préférences */
-    margin-bottom: -167px; /* Espacement entre les champs */
-}
 
+/* ===== Inputs ===== */
+#id_headline {
+    height: 29px;
+    width: 400px;
+    margin-bottom: -167px;
+}
 #id_body {
-    height: 187px; /* Ajustez la hauteur selon vos préférences */
+    height: 187px;
     width: 400px;
 }
+
+/* ===== Labels ===== */
 label[for="id_book_description"] {
     padding-right: 298px;
 }
-label[for="id_book_title"] {
+label[for="id_book_title"],
+label[for="id_book_image"] {
     padding-right: 351px;
 }
 label[for="id_book_image"] {
-    padding-right: 351px;
     margin-top: -27px;
 }
-label {
-    font-size: 25px;
-    display: block;
-    margin-bottom: 5px;
-}
+
+/* ===== Bouton pour image ===== */
 #id_ticket_book_image {
     color: black;
     border: none;
@@ -58,6 +62,8 @@ label {
     transition: background-color 0.3s ease;
     margin-top: -46px;
 }
+
+/* ===== Formulaire ===== */
 form {
     display: flex;
     flex-direction: column;
@@ -65,6 +71,8 @@ form {
     padding: 20px;
     margin: 50px auto auto;
 }
+
+/* ===== Ticket ===== */
 .ticket {
     border: 2px solid black;
     justify-content: left;
@@ -73,6 +81,8 @@ form {
     width: 604px;
     margin: 30px 30px -32px;
 }
+
+/* ===== Contenu du ticket ===== */
 .first_line_ticket {
     display: flex;
     justify-content: space-between;
@@ -80,7 +90,8 @@ form {
     margin-top: 10px;
     gap: 110px;
 }
-.left-content, .right-content {
+.left-content,
+.right-content {
     flex-basis: 50%;
 }
 .date {
@@ -103,6 +114,8 @@ form {
 img {
     margin-left: -400px;
 }
+
+/* ===== Review ===== */
 .first_line_review {
     display: flex;
     justify-content: space-between;
@@ -123,15 +136,15 @@ img {
     margin-bottom: -49px;
     margin-top: -15px;
 }
+
+/* ===== Bouton submit ===== */
 button.submit {
     width: 110px;
     display: block;
     margin: 10px auto auto;
 }
-p label {
-    padding-right: 350px;
-    margin-top: 25px;
-}
+
+/* ===== Autres boutons ===== */
 button {
     background-color: black;
     color: aliceblue;

@@ -1,3 +1,4 @@
+/* ===== Global ===== */
 body {
     display: flex;
     justify-content: center;
@@ -7,11 +8,26 @@ body {
     margin: 0;
     font-size: 25px;
 }
-
 #content {
     text-align: center;
 }
 
+/* ===== Titres ===== */
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+/* ===== Inputs et textarea ===== */
+input[type="text"],
+input[type="password"],
+textarea {
+    height: 29px;
+    width: 260px;
+}
+
+/* ===== Boutons ===== */
 button {
     background-color: black;
     color: aliceblue;
@@ -22,37 +38,24 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 button:hover {
     background-color: darkslategray;
 }
-
-h2 {
-    font-family: "Granesta", sans-serif;
-    font-size: 60px;
-    letter-spacing: 4px;
-}
-
-input[type="text"],
-input[type="password"],
-textarea {
-    height: 29px;
-    width: 260px;
-}
-
-/* authentication/inscription.css */
-
 .button-group {
     display: flex;
-    gap: 10px; /* Espacement entre les boutons */
-    justify-content: center; /* Alignement à gauche des boutons */
+    gap: 10px;
+    justify-content: center;
 }
+
+/* ===== Liste non ordonnée ===== */
 ul {
-    list-style: none; /* Supprime les marqueurs des listes */
-    padding: 0; /* Supprime le padding par défaut */
-    margin: 0; /* Supprime les marges par défaut */
+    list-style: none;
+    padding: 0;
+    margin: 0;
     font-size: 18px;
 }
+
+/* ===== Éléments spans ===== */
 span {
     font-size: 18px;
     display: block;

@@ -1,19 +1,35 @@
 /* ===== Global ===== */
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: "BebasNeue-Regular", sans-serif;
-    margin: 0;
+    margin-top: 50px;
     font-size: 25px;
+    gap: 30px;
 }
 #content {
     text-align: center;
 }
+
+/* ===== Paragraphe ===== */
+p {
+    font-size: 20px;
+    color: aliceblue;
+    margin: 3px 270px 18px auto;
+}
+
+/* ===== Titres ===== */
 h2 {
     font-family: "Granesta", sans-serif;
     font-size: 60px;
+    letter-spacing: 4px;
+}
+h3 {
+    font-family: "Granesta", sans-serif;
+    font-size: 40px;
     letter-spacing: 4px;
 }
 
@@ -32,21 +48,29 @@ button:hover {
     background-color: grey;
 }
 
-/* ===== Formulaire ===== */
-input[type="text"],
-input[type="password"],
-textarea {
+/* ===== Autres styles ===== */
+#text {
+    font-size: 60px;
+}
+input[type="text" i] {
+    writing-mode: horizontal-tb !important;
     height: 29px;
-    width: 260px;
+    width: 400px;
+    margin-bottom: -167px;
 }
-.inscription {
-    display: flex;
-    flex-direction: column;
-    padding-top: 0;
-}
-a:hover {
-    color: grey;
-}
-a {
+
+/* ===== Listes et éléments de liste ===== */
+li.username {
+    font-size: 35px;
     color: black;
+}
+.message {
+    color: black;
+}
+ul {
+    color: black;
+}
+.followers {
+    color: black;
+    font-size: 35px;
 }

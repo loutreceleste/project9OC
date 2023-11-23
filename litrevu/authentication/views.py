@@ -45,6 +45,7 @@ def signup_page(request):
 def follow_view(request):
     user = request.user
     following = user.follows.all()
+    followers = user.followers.all()
 
     form = FollowForm(request.POST or None)
     message = ''
@@ -71,6 +72,7 @@ def follow_view(request):
             user.follows.remove(user_to_unfollow)
 
     context = {
+        'followers' :followers,
         'following': following,
         'form': form,
         'message': message,
