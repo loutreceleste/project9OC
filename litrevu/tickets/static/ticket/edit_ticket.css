@@ -6,10 +6,16 @@ body {
     font-family: "BebasNeue-Regular", sans-serif;
     margin: 0;
     font-size: 25px;
+    overflow-x: hidden;
 }
+
 #content {
     text-align: center;
+    width: 80%; /* Ajout d'une largeur pour centrer le contenu */
+    max-width: 800px; /* Ajustement de la largeur maximale du contenu */
+    margin-top: 50px; /* Ajustement de la marge supérieure */
 }
+
 button {
     background-color: black;
     color: aliceblue;
@@ -82,6 +88,11 @@ p {
     font-size: 20px;
     margin-right: 5px;
 }
-li.error {
+a {
     color: black;
+}
+li {
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

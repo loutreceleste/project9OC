@@ -1,11 +1,21 @@
 {% extends 'base_user.html' %}
 {% block content %}
-<h1>Modifier ce ticket</h1>
-
-  <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Envoyer">
- </form>
-    <a href="{% url 'my_flux' %}"> <button>Retour</button> </a>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'ticket/edit_ticket.css' %}">
+    <div id="content">
+        <h2>- Modifier ce ticket -</h2>
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit">Envoyer</button>
+        </form>
+        <a href="{% url 'my_flux' %}"> <button>Retour</button> </a>
+    </div>
 {% endblock content %}

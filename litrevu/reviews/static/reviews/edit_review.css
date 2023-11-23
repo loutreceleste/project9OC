@@ -1,0 +1,149 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "BebasNeue-Regular", sans-serif;
+    margin-top: 360px;
+    font-size: 25px;
+    gap: 30px;
+}
+#content {
+    text-align: center;
+}
+p {
+    margin: 3px auto 18px;
+    font-size: 20px;
+    color: black;
+    margin-right: 270px;
+}
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+#id_headline {
+    height: 29px; /* Ajustez la hauteur selon vos préférences */
+    width: 400px; /* Ajustez la largeur selon vos préférences */
+    margin-bottom: -167px; /* Espacement entre les champs */
+}
+
+#id_body {
+    height: 187px; /* Ajustez la hauteur selon vos préférences */
+    width: 400px;
+}
+label[for="id_book_description"] {
+    padding-right: 298px;
+}
+label[for="id_book_title"] {
+    padding-right: 351px;
+}
+label[for="id_book_image"] {
+    padding-right: 351px;
+    margin-top: -27px;
+}
+label {
+    font-size: 25px;
+    display: block;
+    margin-bottom: 5px;
+}
+#id_ticket_book_image {
+    color: black;
+    border: none;
+    padding: 10px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: -46px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    padding: 20px;
+    margin: 50px auto auto;
+}
+.ticket {
+    border: 2px solid black;
+    justify-content: left;
+    align-items: center;
+    padding: 6px 376px 20px 27px;
+    width: 604px;
+    margin: 30px 30px -32px;
+}
+.first_line_ticket {
+    display: flex;
+    justify-content: space-between;
+    margin-right: -258px;
+    margin-top: 10px;
+    gap: 110px;
+}
+.left-content, .right-content {
+    flex-basis: 50%;
+}
+.date {
+    font-size: 15px;
+    color: black;
+    margin-right: -97px;
+}
+.right-content {
+    display: flex;
+    align-items: center;
+}
+.author {
+    font-size: 17px;
+    margin-right: 184px;
+}
+.title_ticket {
+    font-size: 25px;
+    margin-right: 388px;
+}
+img {
+    margin-left: -400px;
+}
+.first_line_review {
+    display: flex;
+    justify-content: space-between;
+    margin-right: -388px;
+    margin-top: 10px;
+    gap: 110px;
+}
+.second_line_review {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#id_rating {
+    display: flex;
+    flex-direction: row;
+    padding-right: 10px;
+    gap: 58px;
+    margin-bottom: -49px;
+    margin-top: -15px;
+}
+button.submit {
+    width: 110px;
+    display: block;
+    margin: 10px auto auto;
+}
+p label {
+    padding-right: 350px;
+    margin-top: 25px;
+}
+button {
+    background-color: black;
+    color: aliceblue;
+    border: none;
+    padding: 10px 20px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 90px;
+    margin-top: -30px;
+}
+button:hover {
+    background-color: grey;
+}

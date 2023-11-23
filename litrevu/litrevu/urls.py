@@ -26,7 +26,6 @@ urlpatterns = [
 
         path('review_whithout_ticket/', reviews_views.review_whithout_ticket, name='review_whithout_ticket'),
         path('review_whith_ticket/<int:id>/', reviews_views.review_whith_ticket, name='review_whith_ticket'),
-        path('edit_review/', reviews_views.edit_review, name='edit_review'),
         path('review/<int:id>/change/', reviews_views.edit_review, name='edit_review'),
         path('review/<int:id>/delete/', reviews_views.delete_review, name='delete_review'),
 

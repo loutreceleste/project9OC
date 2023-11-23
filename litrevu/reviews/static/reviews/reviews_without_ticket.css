@@ -128,3 +128,6 @@ p {
     margin-bottom: -49px;
     margin-top: -15px;
 }
+li.error {
+    color: black;
+}

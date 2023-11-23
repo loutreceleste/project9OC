@@ -1,22 +1,36 @@
 {% extends 'base_user.html' %}
 {% block content %}
-<h1>Modifier cette critique</h1>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reviews/edit_review.css' %}">
+<h2>- Modifier cette critique -</h2>
+<div id="content">
+    <div class="ticket">
+            <div class="first_line_ticket">
+                    <div class="left-content">
+                        {% if request.user == ticket.user %}
+                            <p class="author">Vous avez publié ce ticket.</p>
+                        {% else %}
+                            <p class="author">{{ ticket.user }} a demandé une critique.</p>
+                        {% endif %}
+                    </div>
+                    <div class="right-content">
+                        <p class="date">{{ ticket.date_created }}</p>
+                    </div>
+            </div>
+                    <p class="title_ticket">{{ ticket.book_title }}</p>
+                    <p>{{ ticket.book_description }}</p>
+                    {% if ticket.book_image %}
+                    <img src="{{ ticket.book_image.url }}">
+                    {% endif %}
+            </div>
+    </div>
 
-    {%  if request.user == ticket.user %}
-                <p>Vous avez publié ce ticket.</p>
-            {% else %}
-                <p>{{ ticket.user }} a demandé une critique.</p>
-            {% endif %}
 
-            <p>{{ ticket.date_created }}</p>
-            <p>{{ ticket.book_title }}</p>
-            <p>{{ ticket.book_description }}</p>
-            <img src="{{ ticket.book_image.url }}">
-
-  <form action="" method="post">
+<form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Envoyer">
- </form>
-    <a href="{% url 'my_flux' %}"> <button>Retour</button> </a>
+    <button type='submit' class="submit">Envoyer</button>
+</form>
+<a href="{% url 'my_flux' %}"><button>Retour</button></a>
 {% endblock content %}
+

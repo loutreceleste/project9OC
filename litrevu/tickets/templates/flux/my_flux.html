@@ -25,7 +25,9 @@
                             </div>
                             <p class="title_ticket">{{ item.book_title }}</p>
                             <p>{{ item.book_description }}</p>
-                            <img src="{{ item.book_image.url }}">
+                            {% if item.book_image %}
+                                <img src="{{ item.book_image.url }}">
+                            {% endif %}
                     </div>
                     <div class="button">
                         <a href="{% url 'delete_ticket' id=item.id %}"> <button>Supprimer ce ticket</button> </a>
@@ -70,7 +72,9 @@
                                 <p class="author"> Ticket - {{ item.ticket.user|capfirst }} </p>
                                 <p class="title_review">{{ item.ticket.book_title|capfirst }}</p>
                                 <p>{{ item.ticket.book_description|capfirst }}</p>
-                                <img src="{{ item.ticket.book_image.url }}">
+                                {% if item.ticket.book_image %}
+                                    <img src="{{ item.ticket.book_image.url }}">
+                                {% endif %}
                             </div>
                     </div>
                     <div class="button">

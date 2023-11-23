@@ -97,6 +97,7 @@ h2 {
 }
 .author{
     font-size: 17px;
+    margin-bottom: 10px;
 }
 .title_ticket{
     font-size: 25px;
@@ -127,10 +128,6 @@ p{
     margin-right: 25px;
     margin-top: 7px;
     font-size: 25px;/* Pour espacer le titre des étoiles */
-}
-
-.star {
-    margin-top: 0px; /* Supprimer toute marge supplémentaire (si nécessaire) */
 }
 .body_review {
     margin-top: -2px;

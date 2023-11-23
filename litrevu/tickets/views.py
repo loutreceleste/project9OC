@@ -1,4 +1,5 @@
 from itertools import chain
+from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import CharField, Value
 from django.shortcuts import render, redirect
@@ -49,6 +50,7 @@ def my_flux(request):
 
     return render(request, 'flux/my_flux.html', context=context)
 
+
 @login_required
 def ticket(request):
     form = forms.TicketForm()
@@ -64,25 +66,36 @@ def ticket(request):
 
     return render(request, 'ticket/ticket.html', {'form': form})
 
-
 @login_required
 def edit_ticket(request, id):
     ticket = CreateTicket.objects.get(id=id)
 
     if request.user == ticket.user:
-        if request.method =='POST':
-            form = TicketForm(request.POST, instance=ticket)
+        if request.method == 'POST':
+            form = TicketForm(request.POST, request.FILES, instance=ticket)
             if form.is_valid():
-                form.save()
+                if 'book_image-clear' in request.POST and request.POST['book_image-clear'] == 'on':
+                    # Supprimer l'image s'il y en a une
+                    if ticket.book_image:
+                        ticket.book_image.delete()
+                        ticket.book_image = None
+                else:
+                    # Mettre à jour l'image s'il y en a une
+                    if 'book_image' in request.FILES:
+                        ticket.book_image = request.FILES['book_image']
+
+                ticket.save()  # Enregistrer les modifications sur l'objet ticket
                 return redirect('my_flux')
 
         else:
             form = TicketForm(instance=ticket)
 
-        return render(request, 'ticket/edit_ticket.html', {'form': form})
+        return render(request, 'ticket/edit_ticket.html', {'form': form, 'ticket': ticket})
 
     else:
         raise PermissionDenied
+
+
 
 @login_required
 def delete_ticket(request, id):

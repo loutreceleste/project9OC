@@ -1,12 +1,13 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
 from .forms import ReviewForm
 from tickets.forms import TicketForm
-
+from reviews.forms import ReviewForm
 from .models import CreateReviewWithTicket
 from .models import CreateTicket
-
+from django.contrib import messages
 
 @login_required
 def review_whithout_ticket(request):
@@ -19,7 +20,14 @@ def review_whithout_ticket(request):
 
         if ticket_form.is_valid() and review_form.is_valid():
             ticket = ticket_form.save(commit=False)
-            ticket.user = request.user  # Assurez-vous que l'utilisateur est associé au ticket
+            ticket.user = request.user
+
+            if 'book_image' in request.FILES:
+                ticket.book_image = request.FILES['book_image']
+            else:
+                messages.error(request, "Veuillez choisir une image pour le ticket.")
+                return render(request, 'reviews/reviews_without_ticket.html', {'ticket_form': ticket_form, 'review_form': review_form})
+
             ticket.save()
 
             review = review_form.save(commit=False)
@@ -34,6 +42,9 @@ def review_whithout_ticket(request):
         'review_form': review_form,
     }
     return render(request, 'reviews/reviews_without_ticket.html', context=context)
+
+
+
 
 
 @login_required
@@ -59,6 +70,8 @@ def edit_review(request, id):
     review = CreateReviewWithTicket.objects.get(id=id)
 
     if request.user == review.user:
+        ticket = review.ticket  # Récupérer le ticket associé à la critique
+
         if request.method == 'POST':
             form = ReviewForm(request.POST, instance=review)
             if form.is_valid():
@@ -68,10 +81,11 @@ def edit_review(request, id):
         else:
             form = ReviewForm(instance=review)
 
-        return render(request, 'reviews/edit_review.html', {'form': form})
+        return render(request, 'reviews/edit_review.html', {'form': form, 'ticket': ticket})
 
     else:
         raise PermissionDenied
+
 
 
 @login_required

@@ -3,12 +3,19 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'reviews/reviews_without_ticket.css' %}">
     <div id="content">
-        <H2>- Creer Review -</H2>
-        <H3>Le livre / l'Article</H3>
+        <h2>- Creer Review -</h2>
+        <h3>Le livre / l'Article</h3>
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ ticket_form.as_p }}
-        <H3>La Critique</H3>
+        <h3>La Critique</h3>
             {{ review_form.as_p }}
         <button type='submit' class="submit">Envoyer</button>
         </form>
