@@ -1,14 +1,13 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'base_user.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'litrevu/base_user.css' %}">
 <!DOCTYPE html>
 <html>
-<head><title>Litrevu</title><head>
+    <head><title>Litrevu</title><head>
     <body>
         <div class="menu">
-            <h1>LITREVU</h1>
-            {% if user.is_authenticated %}
-
-            {% endif %}
+            <a href="{% url 'flux' %}" class="title">
+                <h1>LITREVU</h1>
+            </a>
             {% block navigation %}
                  <ul id="top">
                     <li><a class="bonjour">Bonjour {{ request.user }}</a></li>
@@ -16,7 +15,7 @@
                     <li><a class="link" href="{% url 'my_flux' %}">Posts</a></li>
                     <li><a class="link" href="{% url 'follow' %}">Abonnements</a></li>
                     {% if user.is_authenticated %}
-                    <li><a class="link" href="{% url 'logout' %}">Se déconnecter</a></li>
+                        <li><a class="link" href="{% url 'logout' %}">Se déconnecter</a></li>
                     {% endif %}
                  </ul>
              {% endblock %}

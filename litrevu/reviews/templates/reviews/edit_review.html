@@ -1,36 +1,33 @@
 {% extends 'base_user.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'reviews/edit_review.css' %}">
-<h2>- Modifier cette critique -</h2>
-<div id="content">
-    <div class="ticket">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reviews/edit_review.css' %}">
+    <h2>- Modifier cette critique -</h2>
+    <div id="content">
+        <div class="ticket">
             <div class="first_line_ticket">
-                    <div class="left-content">
-                        {% if request.user == ticket.user %}
-                            <p class="author">Vous avez publié ce ticket.</p>
-                        {% else %}
-                            <p class="author">{{ ticket.user }} a demandé une critique.</p>
-                        {% endif %}
-                    </div>
-                    <div class="right-content">
-                        <p class="date">{{ ticket.date_created }}</p>
-                    </div>
-            </div>
-                    <p class="title_ticket">{{ ticket.book_title }}</p>
-                    <p>{{ ticket.book_description }}</p>
-                    {% if ticket.book_image %}
-                    <img src="{{ ticket.book_image.url }}">
+                <div class="left-content">
+                    {% if request.user == ticket.user %}
+                        <p class="author">Vous avez publié ce ticket.</p>
+                    {% else %}
+                        <p class="author">{{ ticket.user }} a demandé une critique.</p>
                     {% endif %}
+                </div>
+                <div class="right-content">
+                    <p class="date">{{ ticket.date_created }}</p>
+                </div>
             </div>
+            <p class="title_ticket">{{ ticket.book_title }}</p>
+            <p class="ticket_description">{{ ticket.book_description }}</p>
+            {% if ticket.book_image %}
+            <img src="{{ ticket.book_image.url }}" alt="ticket_image">
+            {% endif %}
+        </div>
     </div>
-
-
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type='submit' class="submit">Envoyer</button>
-</form>
-<a href="{% url 'my_flux' %}"><button>Retour</button></a>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit' class="submit">Envoyer</button>
+    </form>
+    <a href="{% url 'my_flux' %}"><button>Retour</button></a>
 {% endblock content %}
-

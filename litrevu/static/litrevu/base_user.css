@@ -1,10 +1,10 @@
 @font-face {
     font-family: "BebasNeue-Regular";
-    src: url("fonts/BebasNeue-Regular.ttf") format("truetype");
+    src: url("../fonts/BebasNeue-Regular.ttf") format("truetype");
 }
 @font-face {
     font-family: "Granesta";
-    src: url("fonts/Granesta.ttf") format("truetype");
+    src: url("../fonts/Granesta.ttf") format("truetype");
 }
 
 .menu {
@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: #048b9a;
     color: aliceblue;
     height: 80px;
     width: 100%;
@@ -22,14 +22,17 @@
     z-index: 1000;
     padding: 0 20px;
 }
-
 h1 {
     font-family: "Granesta", sans-serif;
     letter-spacing: 4px;
     margin: 0;
     font-size: 35px;
+    text-decoration: none;
 }
-
+.title {
+    text-decoration: none;
+    color: aliceblue;
+}
 ul {
     list-style-type: none;
     display: flex;
@@ -39,27 +42,22 @@ ul {
     font-size: 20px;
     padding-right: 34px;
 }
-
 li {
     margin-right: 10px;
     color: white;
     text-decoration: none;
 }
-
-a:hover{
-    color: grey;
+a.link:hover{
+    color: darkslategray;
 }
-
-a {
+a.link {
     color: white;
     text-decoration: none;
 }
-
 p {
     font-size: 20px;
     margin-right: -1192px;
 }
-
 .bonjour{
     pointer-events: none;
     cursor: default;

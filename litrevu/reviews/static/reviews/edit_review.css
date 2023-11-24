@@ -1,4 +1,4 @@
-/* ===== Global ===== */
+/* ===== Général ===== */
 body {
     display: flex;
     flex-direction: column;
@@ -13,8 +13,6 @@ body {
 #content {
     text-align: center;
 }
-
-/* ===== Paragraphe ===== */
 p {
     font-size: 20px;
     color: black;
@@ -37,11 +35,12 @@ h2 {
 #id_body {
     height: 187px;
     width: 400px;
+    padding-bottom: 154px;
 }
 
 /* ===== Labels ===== */
 label[for="id_book_description"] {
-    padding-right: 298px;
+    padding-right: 400px;
 }
 label[for="id_book_title"],
 label[for="id_book_image"] {
@@ -51,7 +50,7 @@ label[for="id_book_image"] {
     margin-top: -27px;
 }
 
-/* ===== Bouton pour image ===== */
+/* ===== Boutons ===== */
 #id_ticket_book_image {
     color: black;
     border: none;
@@ -62,17 +61,38 @@ label[for="id_book_image"] {
     transition: background-color 0.3s ease;
     margin-top: -46px;
 }
+button.submit {
+    width: 110px;
+    display: block;
+    margin: 10px auto auto;
+}
+button {
+    background-color: #048b9a;
+    color: aliceblue;
+    border: none;
+    padding: 10px 20px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 90px;
+    margin-top: -30px;
+}
+button:hover {
+    background-color: darkslategray;
+}
 
-/* ===== Formulaire ===== */
+/* ===== Formulaires ===== */
 form {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 308px;
     padding: 20px;
     margin: 50px auto auto;
+    gap: 20px;
 }
 
-/* ===== Ticket ===== */
+/* ===== Tickets ===== */
 .ticket {
     border: 2px solid black;
     justify-content: left;
@@ -81,8 +101,6 @@ form {
     width: 604px;
     margin: 30px 30px -32px;
 }
-
-/* ===== Contenu du ticket ===== */
 .first_line_ticket {
     display: flex;
     justify-content: space-between;
@@ -115,7 +133,7 @@ img {
     margin-left: -400px;
 }
 
-/* ===== Review ===== */
+/* ===== Reviews ===== */
 .first_line_review {
     display: flex;
     justify-content: space-between;
@@ -136,27 +154,11 @@ img {
     margin-bottom: -49px;
     margin-top: -15px;
 }
-
-/* ===== Bouton submit ===== */
-button.submit {
-    width: 110px;
-    display: block;
-    margin: 10px auto auto;
+.ticket_description {
+    margin-right: -360px;
+    text-align: left;
 }
-
-/* ===== Autres boutons ===== */
-button {
-    background-color: black;
-    color: aliceblue;
-    border: none;
-    padding: 10px 20px;
-    font-family: "BebasNeue-Regular", sans-serif;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 90px;
-    margin-top: -30px;
-}
-button:hover {
-    background-color: grey;
+label {
+    padding-top: 10px;
+    font-size: 25px;
 }

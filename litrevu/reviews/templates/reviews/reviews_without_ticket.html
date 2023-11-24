@@ -1,24 +1,24 @@
 {% extends 'base_user.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'reviews/reviews_without_ticket.css' %}">
-    <div id="content">
-        <h2>- Creer Review -</h2>
-        <h3>Le livre / l'Article</h3>
-        {% if messages %}
-          <ul class="messages">
-            {% for message in messages %}
-              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ ticket_form.as_p }}
-        <h3>La Critique</h3>
-            {{ review_form.as_p }}
-        <button type='submit' class="submit">Envoyer</button>
-        </form>
-        <a href="{% url 'flux' %}"> <button>Retour</button> </a>
-    </div>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reviews/reviews_without_ticket.css' %}">
+        <div id="content">
+            <h2>- Creer Review -</h2>
+            <h3>Le livre / l'Article</h3>
+            {% if messages %}
+              <ul class="messages">
+                {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ ticket_form.as_p }}
+                <h3>La Critique</h3>
+                {{ review_form.as_p }}
+                <button type='submit' class="submit">Envoyer</button>
+            </form>
+            <a href="{% url 'flux' %}"> <button>Retour</button> </a>
+        </div>
 {% endblock content %}

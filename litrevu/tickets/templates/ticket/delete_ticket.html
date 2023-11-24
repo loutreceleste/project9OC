@@ -1,14 +1,12 @@
 {% extends 'base_user.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'ticket/delete_ticket.css' %}">
-<h2>- Supprimer le ticket -</h2>
-
-<p>Etes-vous sûr de vouloir supprimer le ticket sur le livre : {{ ticket.book_title }} ?</p>
-
-<form action="" method="post">
-{% csrf_token %}
-<button type="submit" value="Supprimer">Supprimer</button>
-</form>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ticket/delete_ticket.css' %}">
+    <h2>- Supprimer le ticket -</h2>
+    <p class="message">Etes-vous sûr de vouloir supprimer le ticket sur le livre : {{ ticket.book_title }} ?</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" value="Supprimer">Supprimer</button>
+    </form>
     <a href="{% url 'my_flux' %}"> <button>Retour</button> </a>
 {% endblock content %}

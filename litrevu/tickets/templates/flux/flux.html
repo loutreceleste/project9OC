@@ -3,95 +3,93 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'flux/flux.css' %}">
 
+    <div id="boutton">
+        <a href="{% url 'review_whithout_ticket' %}" class="boutton">Créer une critique</a>
+        <h2>- Flux -</h2>
+        <a href="{% url 'ticket' %}" class="boutton">Créer un ticket</a>
+    </div>
 
-        <div id="boutton">
-            <a href="{% url 'review_whithout_ticket' %}" class="boutton">Créer une critique</a>
-            <h2>- Flux -</h2>
-            <a href="{% url 'ticket' %}" class="boutton">Créer un ticket</a>
-        </div>
+    {% for item in combined_items %}
+        {% if item.content_type == 'TICKET' %}
+            {% with ticket=item %}
+                {% if item.user in following or request.user == item.user %}
 
-        {% for item in combined_items %}
-            {% if item.content_type == 'TICKET' %}
-                {% with ticket=item %}
-                    {% if item.user in following or request.user == item.user %}
-
-                        <div class="ticket">
-                            <div class="first_line_ticket">
-                                <div class="left-content">
-                                    {%  if request.user == item.user %}
-                                        <p class="author">Vous avez publié ce ticket.</p>
-                                    {% else %}
-                                        <p class="author">{{ item.user|capfirst }} a demandé une critique.</p>
-                                    {% endif %}
-                                </div>
-                                <div class="right-content">
-                                    <p class="date">{{ item.date_created }}</p>
-                                </div>
-                            </div>
-                            <p class="title_ticket">{{ item.book_title }}</p>
-                            <p>{{ item.book_description }}</p>
-                            {% if item.book_image %}
-                                <img src="{{ item.book_image.url }}">
-                            {% endif %}
-                        </div>
-
-                            {% if ticket not in reviewed_tickets %}
-                                <a href="{% url 'review_whith_ticket' id=item.id %}" class="boutton_creation">Créer une critique</a>
-                            {% endif %}
-
-
-                    {% endif %}
-                {% endwith %}
-            {% elif item.content_type == 'REVIEW' %}
-                {% with review=item %}
-                    {% if item.user in following or request.user == item.user %}
-
-                        <div class="review">
-                            <div class="first_line_review">
-                                {% if request.user == item.user %}
-                                    <p class="author">Vous avez publié une critique.</p>
+                    <div class="ticket">
+                        <div class="first_line_ticket">
+                            <div class="left-content">
+                                {%  if request.user == item.user %}
+                                    <p class="author">Vous avez publié ce ticket.</p>
                                 {% else %}
-                                    <p class="author">{{ item.user|capfirst }} a publié cette critique.</p>
+                                    <p class="author">{{ item.user|capfirst }} a demandé une critique.</p>
                                 {% endif %}
-                                <p class="date">{{ item.time_created }}</p>
                             </div>
-
-                            <div class="second_line_review">
-                                <p class="title_review">{{ item.headline }}</p>
-                                <p class="star">{% if item.rating == 1 %}
-                                        &#x2605; &#x2606; &#x2606; &#x2606; &#x2606;
-                                    {% elif item.rating == 2 %}
-                                        &#x2605; &#x2605; &#x2606; &#x2606; &#x2606;
-                                    {% elif item.rating == 3 %}
-                                        &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;
-                                    {% elif item.rating == 4 %}
-                                        &#x2605; &#x2605; &#x2605; &#x2605; &#x2606;
-                                    {% elif item.rating == 5 %}
-                                        &#x2605; &#x2605; &#x2605; &#x2605; &#x2605;
-                                    {% endif %}
-                                </p>
-                            </div>
-
-                                <p class="body_review">{{ item.body|capfirst }}</p>
-
-                            <div class="iner_ticket">
-                                <p class="author"> Ticket - {{ item.ticket.user|capfirst }} </p>
-                                <p class="title_review">{{ item.ticket.book_title|capfirst }}</p>
-                                <p>{{ item.ticket.book_description|capfirst }}</p>
-                                {% if item.ticket.book_image %}
-                                    <img src="{{ item.ticket.book_image.url }}">
-                                {% endif %}
+                            <div class="right-content">
+                                <p class="date">{{ item.date_created }}</p>
                             </div>
                         </div>
-                            {% if request.user != reviewed.user %}
-                                {% if review.ticket not in reviewed_tickets %}
-                                    <a href="{% url 'review_whith_ticket' id=item.ticket.id %}" class="boutton_creation">Créer une critique</a>
-                                {% endif %}
-                            {% endif %}
-                    {% endif %}
-                 {% endwith %}
-            {% endif %}
-        {% endfor %}
+                        <p class="title_ticket">{{ item.book_title }}</p>
+                        <p>{{ item.book_description }}</p>
+                        {% if item.book_image %}
+                            <img src="{{ item.book_image.url }}" alt="ticket_image">
+                        {% endif %}
+                    </div>
 
-    {% endblock content %}
+                    {% if ticket not in reviewed_tickets %}
+                        <a href="{% url 'review_whith_ticket' id=item.id %}" class="boutton_creation">Créer une critique</a>
+                    {% endif %}
+
+                {% endif %}
+            {% endwith %}
+        {% elif item.content_type == 'REVIEW' %}
+            {% with review=item %}
+                {% if item.user in following or request.user == item.user %}
+
+                    <div class="review">
+                        <div class="first_line_review">
+                            {% if request.user == item.user %}
+                                <p class="author">Vous avez publié une critique.</p>
+                            {% else %}
+                                <p class="author">{{ item.user|capfirst }} a publié cette critique.</p>
+                            {% endif %}
+                            <p class="date">{{ item.time_created }}</p>
+                        </div>
+
+                        <div class="second_line_review">
+                            <p class="title_review">{{ item.headline }}</p>
+                            <p class="star">{% if item.rating == 1 %}
+                                    &#x2605; &#x2606; &#x2606; &#x2606; &#x2606;
+                                {% elif item.rating == 2 %}
+                                    &#x2605; &#x2605; &#x2606; &#x2606; &#x2606;
+                                {% elif item.rating == 3 %}
+                                    &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;
+                                {% elif item.rating == 4 %}
+                                    &#x2605; &#x2605; &#x2605; &#x2605; &#x2606;
+                                {% elif item.rating == 5 %}
+                                    &#x2605; &#x2605; &#x2605; &#x2605; &#x2605;
+                                {% endif %}
+                            </p>
+                        </div>
+
+                        <p class="body_review">{{ item.body|capfirst }}</p>
+
+                        <div class="iner_ticket">
+                            <p class="author"> Ticket - {{ item.ticket.user|capfirst }} </p>
+                            <p class="title_review">{{ item.ticket.book_title|capfirst }}</p>
+                            <p>{{ item.ticket.book_description|capfirst }}</p>
+                            {% if item.ticket.book_image %}
+                                <img src="{{ item.ticket.book_image.url }}" alt="ticket_image">
+                            {% endif %}
+                        </div>
+                    </div>
+                        {% if request.user != reviewed.user %}
+                            {% if review.ticket not in reviewed_tickets %}
+                                <a href="{% url 'review_whith_ticket' id=item.ticket.id %}" class="boutton_creation">Créer une critique</a>
+                            {% endif %}
+                        {% endif %}
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock content %}
 

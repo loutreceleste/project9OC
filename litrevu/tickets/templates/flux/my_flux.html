@@ -1,7 +1,7 @@
 {% extends 'base_user.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'flux/my_flux.css' %}">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'flux/my_flux.css' %}">
 
     <h2>- Mes Posts -</h2>
 
@@ -11,23 +11,23 @@
                 {% if request.user == item.user %}
 
                     <div class="ticket">
-                            <div class="first_line_ticket">
-                                <div class="left-content">
-                                    {%  if request.user == item.user %}
-                                        <p class="author">Vous avez publié ce ticket.</p>
-                                    {% else %}
-                                        <p class="author">{{ item.user|capfirst }} a demandé une critique.</p>
-                                    {% endif %}
-                                </div>
-                                <div class="right-content">
-                                    <p class="date">{{ item.date_created }}</p>
-                                </div>
+                        <div class="first_line_ticket">
+                            <div class="left-content">
+                                {%  if request.user == item.user %}
+                                    <p class="author">Vous avez publié ce ticket.</p>
+                                {% else %}
+                                    <p class="author">{{ item.user|capfirst }} a demandé une critique.</p>
+                                {% endif %}
                             </div>
-                            <p class="title_ticket">{{ item.book_title }}</p>
-                            <p>{{ item.book_description }}</p>
-                            {% if item.book_image %}
-                                <img src="{{ item.book_image.url }}">
-                            {% endif %}
+                            <div class="right-content">
+                                <p class="date">{{ item.date_created }}</p>
+                            </div>
+                        </div>
+                        <p class="title_ticket">{{ item.book_title }}</p>
+                        <p>{{ item.book_description }}</p>
+                        {% if item.book_image %}
+                            <img src="{{ item.book_image.url }}" alt="ticket_image">
+                        {% endif %}
                     </div>
                     <div class="button">
                         <a href="{% url 'delete_ticket' id=item.id %}"> <button>Supprimer ce ticket</button> </a>
@@ -41,41 +41,41 @@
                 {% if request.user == item.user %}
 
                     <div class="review">
-                            <div class="first_line_review">
-                                {% if request.user == item.user %}
-                                    <p class="author">Vous avez publié une critique.</p>
-                                {% else %}
-                                    <p class="author">{{ item.user|capfirst }} a publié cette critique.</p>
+                        <div class="first_line_review">
+                            {% if request.user == item.user %}
+                                <p class="author">Vous avez publié une critique.</p>
+                            {% else %}
+                                <p class="author">{{ item.user|capfirst }} a publié cette critique.</p>
+                            {% endif %}
+                            <p class="date">{{ item.time_created }}</p>
+                        </div>
+
+                        <div class="second_line_review">
+                            <p class="title_review">{{ item.headline }}</p>
+                            <p class="star">{% if item.rating == 1 %}
+                                    &#x2605; &#x2606; &#x2606; &#x2606; &#x2606;
+                                {% elif item.rating == 2 %}
+                                    &#x2605; &#x2605; &#x2606; &#x2606; &#x2606;
+                                {% elif item.rating == 3 %}
+                                    &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;
+                                {% elif item.rating == 4 %}
+                                    &#x2605; &#x2605; &#x2605; &#x2605; &#x2606;
+                                {% elif item.rating == 5 %}
+                                    &#x2605; &#x2605; &#x2605; &#x2605; &#x2605;
                                 {% endif %}
-                                <p class="date">{{ item.time_created }}</p>
-                            </div>
+                            </p>
+                        </div>
 
-                            <div class="second_line_review">
-                                <p class="title_review">{{ item.headline }}</p>
-                                <p class="star">{% if item.rating == 1 %}
-                                        &#x2605; &#x2606; &#x2606; &#x2606; &#x2606;
-                                    {% elif item.rating == 2 %}
-                                        &#x2605; &#x2605; &#x2606; &#x2606; &#x2606;
-                                    {% elif item.rating == 3 %}
-                                        &#x2605; &#x2605; &#x2605; &#x2606; &#x2606;
-                                    {% elif item.rating == 4 %}
-                                        &#x2605; &#x2605; &#x2605; &#x2605; &#x2606;
-                                    {% elif item.rating == 5 %}
-                                        &#x2605; &#x2605; &#x2605; &#x2605; &#x2605;
-                                    {% endif %}
-                                </p>
-                            </div>
+                        <p class="body_review">{{ item.body|capfirst }}</p>
 
-                                <p class="body_review">{{ item.body|capfirst }}</p>
-
-                            <div class="iner_ticket">
-                                <p class="author"> Ticket - {{ item.ticket.user|capfirst }} </p>
-                                <p class="title_review">{{ item.ticket.book_title|capfirst }}</p>
-                                <p>{{ item.ticket.book_description|capfirst }}</p>
-                                {% if item.ticket.book_image %}
-                                    <img src="{{ item.ticket.book_image.url }}">
-                                {% endif %}
-                            </div>
+                        <div class="iner_ticket">
+                            <p class="author"> Ticket - {{ item.ticket.user|capfirst }} </p>
+                            <p class="title_review">{{ item.ticket.book_title|capfirst }}</p>
+                            <p class="ticket_descrition">{{ item.ticket.book_description|capfirst }}</p>
+                            {% if item.ticket.book_image %}
+                                <img src="{{ item.ticket.book_image.url }}" alt="ticket_image">
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="button">
                         <a href="{% url 'delete_review' id=item.id %}"> <button>Supprimer cette critique</button> </a>

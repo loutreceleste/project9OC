@@ -1,3 +1,4 @@
+/* ===== Général ===== */
 body {
     display: flex;
     justify-content: center;
@@ -8,16 +9,23 @@ body {
     font-size: 25px;
     overflow-x: hidden;
 }
-
 #content {
     text-align: center;
-    width: 80%; /* Ajout d'une largeur pour centrer le contenu */
-    max-width: 800px; /* Ajustement de la largeur maximale du contenu */
-    margin-top: 50px; /* Ajustement de la marge supérieure */
+    width: 80%;
+    max-width: 800px;
+    margin-top: 50px;
 }
 
+/* ===== Titres ===== */
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+/* ===== Boutons ===== */
 button {
-    background-color: black;
+    background-color: #048b9a;
     color: aliceblue;
     border: none;
     padding: 10px 20px;
@@ -28,12 +36,21 @@ button {
     margin-bottom: 10px;
 }
 button:hover {
-    background-color: grey;
+    background-color: darkslategray;
 }
-h2 {
-    font-family: "Granesta", sans-serif;
-    font-size: 60px;
-    letter-spacing: 4px;
+button.submit {
+    width: 110px;
+    margin: auto;
+    display: block;
+}
+
+/* ===== Formulaires ===== */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    padding: 20px;
+    margin: -56px auto auto;
 }
 #id_book_title {
     height: 29px;
@@ -43,6 +60,17 @@ h2 {
 #id_book_description {
     height: 187px;
     width: 400px;
+    padding-bottom: 154px;
+}
+#id_book_image {
+    color: black;
+    border: none;
+    padding: 10px;
+    font-family: "BebasNeue-Regular", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: -46px;
 }
 label[for="id_book_description"] {
     padding-right: 298px;
@@ -59,40 +87,14 @@ label {
     display: block;
     margin-bottom: 5px;
 }
-#id_book_image {
-    color: black;
-    border: none;
-    padding: 10px;
-    font-family: "BebasNeue-Regular", sans-serif;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: -46px;
-}
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    padding: 20px;
-    margin: -56px auto auto;
-}
-label{
-    font-size: 25px;
-}
-button.submit {
-    width: 110px;
-    margin: auto;
-    display: block;
-}
+
+/* ===== Eléments textuels ===== */
 p {
     font-size: 20px;
     margin-right: 5px;
 }
-a {
-    color: black;
-}
+
 li {
-    color: black;
     margin-top: 10px;
     margin-bottom: 10px;
 }

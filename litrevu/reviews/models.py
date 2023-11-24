@@ -3,7 +3,6 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
 from tickets.models import CreateTicket
 
-
 class CreateReviewWithTicket(models.Model):
 
     ticket = models.ForeignKey(CreateTicket, on_delete=models.CASCADE, related_name='reviews')

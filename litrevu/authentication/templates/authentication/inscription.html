@@ -1,21 +1,18 @@
-<!-- Votre fichier HTML pour l'inscription -->
 {% extends 'base_authentication.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'authentication/inscription.css' %}"/>
-<div id="content">
-    <h2>- Inscription -</h2>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/inscription.css' %}"/>
+    <div id="content">
+        <h2>- Inscription -</h2>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <div class="button-group">
+                <button type="submit">S’inscrire</button>
+            </div>
+        </form>
         <div class="button-group">
-            <button type="submit">S’inscrire</button>
+            <a href="{% url 'login' %}"><button>Retour</button></a>
         </div>
-    </form>
-    <div class="button-group">
-        <a href="{% url 'login' %}"><button>Retour</button></a>
     </div>
-</div>
 {% endblock content %}
-
-

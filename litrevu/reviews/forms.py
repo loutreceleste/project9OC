@@ -9,7 +9,6 @@ class ReviewForm(forms.ModelForm):
         (4, '4'),
         (5, '5'),
     ]
-
     rating = forms.ChoiceField(
         widget=forms.RadioSelect,
         label="Note",

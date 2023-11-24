@@ -1,33 +1,32 @@
 {% extends 'base_user.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'authentication/follow.css' %}">
-    <h2>- Suivre d'autres utilisateurs -</h2>
-    <form method="post">
-    <p class="message">{{ message }}</p>
-        {% csrf_token %}
-        <label for="username">Nom d'utilisateur:</label>
-        <input type="text" id="username" name="username">
-        <button type="submit" name="follow">Suivre</button>
-    </form>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/follow.css' %}">
+        <h2>- Suivre d'autres utilisateurs -</h2>
+        <form method="post">
+            <p class="message">{{ message }}</p>
+            {% csrf_token %}
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" id="username" name="username">
+            <button type="submit" name="follow">Suivre</button>
+        </form>
 
-    <h3>- Mes Abonnements -</h3>
-    <ul>
-        {% for user in following %}
-            <li class="username">{{ user.username }}
-                <form method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="unfollow" value="{{ user.id }}">
-                    <button type="submit">Se Désabonner</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <h3>- Mes Abonnes -</h3>
-    <ul>
-        {% for user in followers %}
-            <li class="followers">{{ user.username }}</li>
-        {% endfor %}
-    </ul>
+        <h3>- Mes Abonnements -</h3>
+        <ul>
+            {% for user in following %}
+                <li class="username">{{ user.username }}
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="unfollow" value="{{ user.id }}">
+                        <button type="submit">Se Désabonner</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        <h3>- Mes Abonnes -</h3>
+        <ul>
+            {% for user in followers %}
+                <li class="followers">{{ user.username }}</li>
+            {% endfor %}
+        </ul>
 {% endblock %}

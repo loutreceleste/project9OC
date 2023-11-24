@@ -1,7 +1,7 @@
 {% extends 'base_user.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'ticket/ticket.css' %}">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ticket/ticket.css' %}">
     <div id="content">
         <h2>- Creer un ticket -</h2>
         {% if messages %}

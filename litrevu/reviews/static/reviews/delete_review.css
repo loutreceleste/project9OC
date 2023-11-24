@@ -1,4 +1,4 @@
-/* ===== Global ===== */
+/* ===== Général ===== */
 body {
     display: flex;
     flex-direction: column;
@@ -9,8 +9,6 @@ body {
     margin: 0;
     font-size: 25px;
 }
-
-/* ===== Paragraphe ===== */
 p {
     text-align: center;
     margin: -22px auto 42px;
@@ -26,7 +24,7 @@ h2 {
 
 /* ===== Boutons ===== */
 button {
-    background-color: black;
+    background-color: #048b9a;
     color: aliceblue;
     border: none;
     padding: 10px 20px;
@@ -36,5 +34,5 @@ button {
     transition: background-color 0.3s ease;
 }
 button:hover {
-    background-color: grey;
+    background-color: darkslategray;
 }

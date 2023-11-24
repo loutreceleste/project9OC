@@ -1,6 +1,5 @@
 from django.core.exceptions import ValidationError
 
-
 class ContainsLetterValidator:
     @staticmethod
     def validate(password, user=None):

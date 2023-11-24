@@ -1,13 +1,15 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
-from .forms import ReviewForm
+from django.contrib import messages
+
 from tickets.forms import TicketForm
 from reviews.forms import ReviewForm
+
 from .models import CreateReviewWithTicket
 from .models import CreateTicket
-from django.contrib import messages
+from .forms import ReviewForm
+
 
 @login_required
 def review_whithout_ticket(request):
@@ -26,7 +28,8 @@ def review_whithout_ticket(request):
                 ticket.book_image = request.FILES['book_image']
             else:
                 messages.error(request, "Veuillez choisir une image pour le ticket.")
-                return render(request, 'reviews/reviews_without_ticket.html', {'ticket_form': ticket_form, 'review_form': review_form})
+                return render(request, 'reviews/reviews_without_ticket.html',
+                              {'ticket_form': ticket_form, 'review_form': review_form})
 
             ticket.save()
 
@@ -42,10 +45,6 @@ def review_whithout_ticket(request):
         'review_form': review_form,
     }
     return render(request, 'reviews/reviews_without_ticket.html', context=context)
-
-
-
-
 
 @login_required
 def review_whith_ticket(request, id):
@@ -63,14 +62,15 @@ def review_whith_ticket(request, id):
 
             return redirect('flux')
 
-    return render(request, 'reviews/review_whith_ticket.html', {'review_form': review_form, 'ticket': ticket})
+    return render(request, 'reviews/review_whith_ticket.html',
+                  {'review_form': review_form, 'ticket': ticket})
 
 @login_required
 def edit_review(request, id):
     review = CreateReviewWithTicket.objects.get(id=id)
 
     if request.user == review.user:
-        ticket = review.ticket  # Récupérer le ticket associé à la critique
+        ticket = review.ticket
 
         if request.method == 'POST':
             form = ReviewForm(request.POST, instance=review)
@@ -86,8 +86,6 @@ def edit_review(request, id):
     else:
         raise PermissionDenied
 
-
-
 @login_required
 def delete_review(request, id):
     review_whith_ticket = CreateReviewWithTicket.objects.get(id=id)
@@ -97,8 +95,8 @@ def delete_review(request, id):
             review_whith_ticket.delete()
             return redirect('my_flux')
 
-
-        return render(request, 'reviews/delete_review.html', {'review_whith_ticket': review_whith_ticket})
+        return render(request, 'reviews/delete_review.html',
+                      {'review_whith_ticket': review_whith_ticket})
 
     else:
         raise PermissionDenied

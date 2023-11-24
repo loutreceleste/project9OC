@@ -1,10 +1,10 @@
-from django.contrib.auth import authenticate, login, logout
-from authentication.forms import LoginForm, SignupForm
+from authentication.forms import LoginForm, SignupForm, FollowForm
 from authentication.models import User
-from authentication.forms import FollowForm
-from django.shortcuts import get_object_or_404
+
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+
 from .models import User
 from .forms import FollowForm
 

@@ -1,14 +1,12 @@
 {% extends 'base_user.html' %}
 {% block content %}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'reviews/delete_review.css' %}">
-<h2>- Supprimer la critique -</h2>
-
-<p>Êtes-vous sûr de vouloir supprimer la critique associée au ticket ?</p>
-
-<form action="" method="post">
-{% csrf_token %}
-<button type="submit" value="Supprimer">Supprimer</button>
-</form>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reviews/delete_review.css' %}">
+    <h2>- Supprimer la critique -</h2>
+    <p>Êtes-vous sûr de vouloir supprimer la critique associée au ticket ?</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" value="Supprimer">Supprimer</button>
+    </form>
     <a href="{% url 'my_flux' %}"> <button>Retour</button> </a>
 {% endblock content %}

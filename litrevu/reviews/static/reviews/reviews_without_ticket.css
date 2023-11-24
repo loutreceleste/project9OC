@@ -1,4 +1,4 @@
-/* ===== Global ===== */
+/* ===== Général ===== */
 body {
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@ p {
     margin-right: 5px;
 }
 
-/* ==== Boutons ==== */
+/* ===== Boutons ===== */
 button {
     background-color: black;
     color: aliceblue;
@@ -26,33 +26,32 @@ button {
     font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 90px; /* Espacement entre les boutons */
+    margin-bottom: 90px;
 }
-
 button:hover {
-    background-color: grey;
+    background-color: darkslategray;
 }
 button.submit {
     width: 110px;
-    margin: auto; /* Pour centrer le bouton horizontalement */
+    margin: auto;
     display: block;
 }
 
-/* ==== Titres ==== */
+/* ===== Titres ===== */
 h2 {
     font-family: "Granesta", sans-serif;
     font-size: 60px;
     letter-spacing: 4px;
     margin-bottom: 78px;
 }
-h3{
+h3 {
     font-family: "Granesta", sans-serif;
     font-size: 30px;
     letter-spacing: 4px;
     margin-top: 60px;
 }
 
-/* ==== Formulaire ==== */
+/* ===== Formulaires ===== */
 form {
     display: flex;
     flex-direction: column;
@@ -61,7 +60,7 @@ form {
     margin: -56px auto auto;
 }
 
-/* ==== Inputs et Labels ==== */
+/* ===== Inputs et Labels ==== */
 label{
     font-size: 25px;
     display: block;
@@ -112,6 +111,7 @@ label[for="id_body"] {
 #id_book_description {
     height: 187px;
     width: 400px;
+    padding-bottom: 154px;
 }
 #id_headline {
     height: 29px;
@@ -121,9 +121,10 @@ label[for="id_body"] {
 #id_body {
     height: 187px;
     width: 400px;
+    padding-bottom: 154px;
 }
 
-/* ==== Autres Éléments ==== */
+/* ===== Autres Éléments ===== */
 li.error {
     color: black;
 }

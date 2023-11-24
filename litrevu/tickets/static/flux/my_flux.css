@@ -1,9 +1,9 @@
+/* ===== Général ===== */
 .item {
     border: 2px solid black !important;
     padding: 10px;
     margin: 10px;
 }
-
 body {
     display: flex;
     flex-direction: column;
@@ -14,35 +14,28 @@ body {
     gap: 30px;
     margin-top: 119px;
     overflow-x: hidden;
-
 }
+
+/* ===== Titres ===== */
+h2 {
+    font-family: "Granesta", sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+/* ===== Tickets ===== */
 .ticket {
-    border: 2px solid black; /* Spécifie le type de bordure (solid) et la couleur (black) */
-    justify-content: left; /* Centre le contenu horizontalement */
-    align-items: center; /* Centre le contenu verticalement */
-    margin: 30px;
-    padding-right: 376px;
-    padding-left: 27px;
-    padding-bottom: 20px;
-    padding-top: 6px;
-    width: 604px;
-    margin-bottom: -32px;
-}
-
-.review {
     border: 2px solid black;
-    text-align: left; /* Aligne le contenu du div à gauche */
-    margin: 30px;
-    padding-right: 508px;
-    padding-left: 19px;
-    width: 475px;
-    margin-bottom: -32px;
+    justify-content: left;
+    align-items: center;
+    padding: 6px 376px 20px 27px;
+    width: 604px;
+    margin: 30px 30px -32px;
 }
-
-.iner_ticket{
-    border: 2px solid black; /* Spécifie le type de bordure (solid) et la couleur (black) */
-    justify-content: center; /* Centre le contenu horizontalement */
-    align-items: center; /* Centre le contenu verticalement */
+.iner_ticket {
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
     padding-right: 150px;
     padding-left: 26px;
     padding-bottom: 20px;
@@ -50,10 +43,78 @@ body {
     margin-right: -462px;
     margin-left: 32px;
 }
+.first_line_ticket {
+    display: flex;
+    justify-content: space-between;
+    margin-right: -961px;
+    gap: 110px;
+}
+.left-content, .right-content {
+    flex-basis: 50%;
+}
+.date {
+    font-size: 15px;
+    color: black;
+    margin-right: -97px;
+}
+.right-content {
+    display: flex;
+    align-items: center;
+}
+.author {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+.title_ticket {
+    font-size: 25px;
+    margin-top: 8px;
+}
+img {
+    margin-left: 4px;
+}
+.ticket_descrition {
+    padding-right: 48px;
+}
 
+/* ===== Reviews ===== */
+.review {
+    border: 2px solid black;
+    text-align: left;
+    padding-right: 508px;
+    padding-left: 19px;
+    width: 475px;
+    margin: 30px 30px -32px;
+}
+.first_line_review {
+    display: flex;
+    justify-content: space-between;
+    margin-right: -388px;
+    margin-top: 10px;
+    gap: 110px;
+}
+p {
+    margin-right: -193px;
+}
+.second_line_review {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.star {
+    margin-top: 0;
+}
+.title_review {
+    margin-right: 25px;
+    margin-top: 7px;
+    font-size: 25px;
+}
+.body_review {
+    margin-top: -2px;
+}
+
+/* ===== Boutons ===== */
 button {
-
-    background-color: black;
+    background-color: #048b9a;
     color: aliceblue;
     border: none;
     padding: 10px 20px;
@@ -62,73 +123,10 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 button:hover {
-    background-color: grey;
+    background-color: darkslategray;
 }
 #button {
     display: flex;
     flex-direction: row;
-
-}
-h2 {
-    font-family: "Granesta", sans-serif;
-    font-size: 60px;
-    letter-spacing: 4px;
-}
-.first_line_ticket {
-    display: flex;
-    justify-content: space-between; /* Pour espacer les éléments */
-    margin-right: -961px;
-    gap: 110px;
-}
-
-.left-content, .right-content {
-    flex-basis: 50%; /* Pour que les deux éléments occupent chacun 50% de l'espace */
-}
-.date{
-    font-size: 15px;
-    color: black;
-    margin-right: -97px;
-}
-.right-content{
-    display: flex;
-    align-items: center;
-}
-.author{
-    font-size: 17px;
-    margin-bottom: 10px;
-}
-.title_ticket{
-    font-size: 25px;
-    margin-top: 8px;
-}
-img {
-    margin-left: 4px;
-}
-.first_line_review{
-    display: flex;
-    justify-content: space-between; /* Pour espacer les éléments */
-    margin-right: -388px;
-    margin-top: 10px;
-    gap: 110px;
-}
-p{
-    margin-right: -193px;
-}
-.second_line_review {
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Pour aligner verticalement si nécessaire */
-}
-.star{
-    margin-top: 0;
-}
-.title_review {
-    margin-right: 25px;
-    margin-top: 7px;
-    font-size: 25px;/* Pour espacer le titre des étoiles */
-}
-.body_review {
-    margin-top: -2px;
 }

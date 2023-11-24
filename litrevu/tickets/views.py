@@ -1,11 +1,13 @@
-from itertools import chain
-from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import CharField, Value
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from . import forms, models
+
+from itertools import chain
+
 from reviews.models import CreateReviewWithTicket
+
+from . import forms, models
 from .forms import TicketForm
 from .models import CreateTicket
 
@@ -59,9 +61,9 @@ def ticket(request):
         form = forms.TicketForm(request.POST, request.FILES)
 
         if form.is_valid():
-            photo = form.save(commit=False)
-            photo.user = request.user
-            photo.save()
+            ticket = form.save(commit=False)
+            ticket.user = request.user
+            ticket.save()
             return redirect('flux')
 
     return render(request, 'ticket/ticket.html', {'form': form})
@@ -75,16 +77,14 @@ def edit_ticket(request, id):
             form = TicketForm(request.POST, request.FILES, instance=ticket)
             if form.is_valid():
                 if 'book_image-clear' in request.POST and request.POST['book_image-clear'] == 'on':
-                    # Supprimer l'image s'il y en a une
                     if ticket.book_image:
                         ticket.book_image.delete()
                         ticket.book_image = None
                 else:
-                    # Mettre à jour l'image s'il y en a une
                     if 'book_image' in request.FILES:
                         ticket.book_image = request.FILES['book_image']
 
-                ticket.save()  # Enregistrer les modifications sur l'objet ticket
+                ticket.save()
                 return redirect('my_flux')
 
         else:
@@ -94,8 +94,6 @@ def edit_ticket(request, id):
 
     else:
         raise PermissionDenied
-
-
 
 @login_required
 def delete_ticket(request, id):
@@ -110,7 +108,3 @@ def delete_ticket(request, id):
 
     else:
         raise PermissionDenied
-
-
-
-

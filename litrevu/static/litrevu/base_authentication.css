@@ -1,35 +1,31 @@
 @font-face {
     font-family: "BebasNeue-Regular";
-    src: url("fonts/BebasNeue-Regular.ttf") format("truetype");
+    src: url("../fonts/BebasNeue-Regular.ttf") format("truetype");
 }
 @font-face {
     font-family: "Granesta";
-    src: url("fonts/Granesta.ttf") format("truetype");
+    src: url("../fonts/Granesta.ttf") format("truetype");
 }
 
-/* Styles pour la classe .menu */
 .menu {
     font-family: "Granesta", sans-serif;
     display: flex;
-    justify-content: space-between; /* Aligner le contenu à gauche et à droite */
-    align-items: center; /* Centrer verticalement */
-    background-color: black;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #048b9a;
     color: aliceblue;
-    height: 80px; /* Hauteur de la barre de menu */
-    width: 100%; /* Prend toute la largeur */
-    position: fixed; /* Position fixe */
-    top: 0; /* Alignement en haut */
-    left: 0; /* Alignement à gauche */
-    z-index: 1000; /* Empilement en premier plan */
-    padding: 0 20px; /* Ajout de marge intérieure */
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 20px;
 }
 
 h1 {
     font-family: "Granesta", sans-serif;
     letter-spacing: 4px;
-    margin: 0; /* Supprime les marges par défaut */
+    margin: 0;
     font-size: 35px;
 }
-
-
-

@@ -1,3 +1,4 @@
+/* ===== Général ===== */
 body {
     display: flex;
     flex-direction: column;
@@ -9,17 +10,23 @@ body {
     font-size: 25px;
 }
 p {
-    text-align: center; /* Centre le texte horizontalement */
-    margin: -22px auto 42px;
+    text-align: center;
     font-size: 25px;
 }
+.message {
+    margin-right: inherit;
+}
+
+/* ===== Titres ===== */
 h2 {
     font-family: "Granesta", sans-serif;
     font-size: 60px;
     letter-spacing: 4px;
 }
+
+/* ===== Boutons ===== */
 button {
-    background-color: black;
+    background-color: #048b9a;
     color: aliceblue;
     border: none;
     padding: 10px 20px;
@@ -29,5 +36,6 @@ button {
     transition: background-color 0.3s ease;
 }
 button:hover {
-    background-color: grey;
+    background-color: darkslategray;
 }
+
