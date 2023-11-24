@@ -20,7 +20,7 @@ A la demande de la jeune start-up LITRevu, j'ai realisé ce projet développé a
 2. Accédez au répertoire du projet :
 
     ```bash
-    cd project9OC
+    cd project9OC/litrevu
     ```
 
 3. Installez les dépendances :
@@ -28,23 +28,6 @@ A la demande de la jeune start-up LITRevu, j'ai realisé ce projet développé a
     ```bash
     pip install -r requirements.txt
     ```
-
-## Configuration
-
-1. Créez les migrations pour la base de données :
-
-    ```bash
-    python manage.py makemigrations
-    python manage.py migrate
-    ```
-
-2. Créez un super utilisateur pour accéder à l'interface admin :
-
-    ```bash
-    python manage.py createsuperuser
-    ```
-
-    Suivez les instructions pour définir un nom d'utilisateur et un mot de passe.
 
 ## Lancement du serveur local
 
@@ -69,6 +52,23 @@ Connectez-vous en utilisant les informations du super utilisateur créé précé
 - **Identifiant:** admin **Mot de passe:** admin *super utilisateur*
 - **Identifiant:** jean **Mot de passe:** jeanjean
 - **Identifiant:** marc **Mot de passe:** marcmarc
+
+## Configuration (optionel)
+
+1. Créez les migrations pour la base de données :
+
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+2. Créez un super utilisateur pour accéder à l'interface admin :
+
+    ```bash
+    python manage.py createsuperuser
+    ```
+
+    Suivez les instructions pour définir un nom d'utilisateur et un mot de passe.
 
 ## Contribuer
 Toute contribution est la bienvenue ! N'hésitez pas à ouvrir une pull request ou à signaler des problèmes.

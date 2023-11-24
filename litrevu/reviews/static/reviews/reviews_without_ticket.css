@@ -18,7 +18,7 @@ p {
 
 /* ===== Boutons ===== */
 button {
-    background-color: black;
+    background-color: #048b9a;
     color: aliceblue;
     border: none;
     padding: 10px 20px;
@@ -77,7 +77,7 @@ label[for="id_book_title"] {
 }
 label[for="id_book_image"] {
     padding-right: 351px;
-    margin-top: -27px;
+
 }
 label[for="id_headline"] {
     margin-top: -40px;
